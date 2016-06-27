@@ -119,49 +119,49 @@ int main(int argc, char *argv[])
                 break;
             }
             auto sPos = sData.indexOf(shot,0,Qt::CaseInsensitive);
-            QString cr = sData.mid(sPos,20);
+            QString cr = sData.mid(sPos,19);
             if(cr.contains("\n"))
             {
                 sPos +=2;
             }
             // auto shotNo  = sData.mid(sPos+20,sPos+5);
-            QString shotNo = sData.mid(sPos+20,5);
+            QString shotNo = sData.mid(sPos+19,6);
             int shotNos;
 
             if(shotNo.contains("\n") || shotNo.contains("\r"))
             {
-                shotNo = sData.mid(sPos+20,7);
+                shotNo = sData.mid(sPos+19,8);
                 int shift1 = shotNo.indexOf("\r");
                 int shift = shotNo.indexOf("\n");
                 //    cout << shift1 << " " << shift << endl;
                 QString tmp = shotNo.mid(0,shift1);
-                tmp.append(shotNo.mid(shift+1,2));
+                tmp.append(shotNo.mid(shift+1,3));
                 shotNos = tmp.toInt();
             }
             else
             {
-                shotNos = sData.mid(sPos+20,5).toInt();
+                shotNos = sData.mid(sPos+19,6).toInt();
             }
 
             float shotYs;
             sPos = sData.indexOf(shot,0,Qt::CaseInsensitive);
-            cr = sData.mid(sPos,56);
+            cr = sData.mid(sPos,55);
             if(cr.contains("\n"))
             {
                 //       cout << " cr " << sPos << endl;
                 sPos +=2;
             }
 
-            QString shotY = sData.mid(sPos+56,9);
+            QString shotY = sData.mid(sPos+55,10);
             //   cout << "shotx " << shotX.toStdString() << endl;
             if(shotY.contains("\n") || shotY.contains("\r"))
             {
-                shotY = sData.mid(sPos+56,11);
+                shotY = sData.mid(sPos+55,12);
                 int shift1 = shotY.indexOf("\r");
                 int shift = shotY.indexOf("\n");
                 //           cout << shift1 << " " << shift << endl;
                 QString tmp = shotY.mid(0,shift1);
-                tmp.append(shotY.mid(shift+1,11));
+                tmp.append(shotY.mid(shift+1,12));
                 shotYs = tmp.toFloat();
             }
             else
@@ -171,23 +171,23 @@ int main(int argc, char *argv[])
 
             float shotXs;
             sPos = sData.indexOf(shot,0,Qt::CaseInsensitive);
-            cr = sData.mid(sPos,47);
+            cr = sData.mid(sPos,46);
             if(cr.contains("\n"))
             {
                 //       cout << " cr " << sPos << endl;
                 sPos +=2;
             }
 
-            QString shotX = sData.mid(sPos+47,9);
+            QString shotX = sData.mid(sPos+46,10);
             //   cout << "shotx " << shotX.toStdString() << endl;
             if(shotX.contains("\n") || shotX.contains("\r"))
             {
-                shotX = sData.mid(sPos+47,11);
+                shotX = sData.mid(sPos+46,12);
                 int shift1 = shotX.indexOf("\r");
                 int shift = shotX.indexOf("\n");
                 //           cout << shift1 << " " << shift << endl;
                 QString tmp = shotX.mid(0,shift1);
-                tmp.append(shotX.mid(shift+1,11));
+                tmp.append(shotX.mid(shift+1,12));
                 shotXs = tmp.toFloat();
             }
             else
@@ -204,12 +204,12 @@ int main(int argc, char *argv[])
             int shotYy = 981 + shotYr/25.0;
             float shotXr = shotXt * cosf(13.661f * M_PI/180.0f) - shotYt * sinf(13.661f * M_PI/180.0f);
             int shotXx = 2570 - shotXr/25.0;
-            if(shotXx>0 && shotYy>0)
-            {
+//            if(shotXx>0 && shotYy>0)
+//            {
                 QPointF shotPoint(shotXx,shotYy);
                 curveData.append(shotPoint);
-              //  cout << " shot " << shotNos << " " << shotXs  << " " << shotYs << " "  << shotXx << " " << shotYy << endl;
-            }
+            //    cout << " shot " << shotNos << " " << shotXs  << " " << shotYs << " "  << shotXx << " " << shotYy << endl;
+ //           }
 
 
 
